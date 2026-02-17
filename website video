@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wistia Rounded Embed</title>
+
+    <script src="https://fast.wistia.com/player.js" async></script>
+    <script src="https://fast.wistia.com/embed/mkvjyedu6g.js" async type="module"></script>
+
+    <style>
+      html, body { margin: 0; background: transparent; }
+
+      .wrap {
+        width: 100%;
+        aspect-ratio: 16 / 9;    /* confirmed from your embed */
+        border-radius: 18px;
+        overflow: hidden;        /* THE magic */
+        background: transparent;
+      }
+
+      /* Make sure the custom element fills the wrapper */
+      wistia-player { width: 100%; height: 100%; display: block; }
+
+      /* Keep your nice blurred placeholder while loading */
+      wistia-player[media-id='mkvjyedu6g']:not(:defined) {
+        background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/mkvjyedu6g/swatch');
+        display: block;
+        filter: blur(5px);
+        padding-top: 56.25%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <wistia-player media-id="mkvjyedu6g" aspect="1.7777777777777777"></wistia-player>
+    </div>
+  </body>
+</html>
